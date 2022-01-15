@@ -1,4 +1,4 @@
-const pilotos = ['Vedel', 'Marcos', 'Marroni', 'Wesley']
+const aprovados = ['Vedel', 'Marcos', 'Marroni', 'Wesley']
 aprovados.pop() // remove o ultima
 console.log(aprovados);
 

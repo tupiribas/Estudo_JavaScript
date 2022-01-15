@@ -1,0 +1,1 @@
+import moduloA from './moduloA';

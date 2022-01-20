@@ -1,7 +1,7 @@
 const quaseArray = { 0: 'Amanda', 1:'Joana', 2:'Lais' }
 console.log(quaseArray);
 
-Object.defineProperties(quaseArray, 'toString', {
+Object.defineProperty(quaseArray, 'toString', {
     value: function() { return Object.values(this) },
     enumerable: false
 })

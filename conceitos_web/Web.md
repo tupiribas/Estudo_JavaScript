@@ -101,5 +101,71 @@ Um único servidor web pode atender a várias requisições
 
 Web Server => Pastas: Imagens, css, js, index.html, about.html
 
-## Web Stack
+# Client Side vs Server Side
+
+## Mainframe
+
+Um mainframe é um computador de grande porte dedicado normalmente ao processamento de um volume enorme de informações
+
+## Client-server
+
+O modelo cliente-servidor, em computação, é uma estrutura de aplicação distribuída que distribui as tarefas e cargas de trabalho entre os fornecedores de um recurso ou serviço, designados como servidores, e os requerentes dos serviços, designados como clientes.
+
+## Web - server-side
+
+Server-side, ou literalmente "lado do servidor", também conhecido por back-end, é um termo usado para designar operações que, em um contexto cliente-servidor, são feitas no servidor, não no cliente.
+
+## Client-side: front-end
+
+Lado cliente, também conhecido como front-end refere-se às operações que são realizadas pelo cliente em um relacionamento cliente-servidor em uma rede de computadores.
+
+# Conteúdo Estático vs Dinâmico
+
+## Estático
+
+O servidor faz a leitura do arquivo e o conteúdo é passado para a aplicação.
+
+## Dinâmico
+
+Quando o conteúdo está sempre mudando de estado.
+
+Pode ser criada uma estratégia na aplicação para que ela seja, tanto dinâmica quanto estática.
+
+**A amostragem de um conteúdo, pode gerar um conteúdo estático**
+
+**A pesquisa por um dado pode gerar conteúdos dinâmicos**
+
+# Servidor DNS
+
+Traduz os nomes de domínio em endereço IP
+
+www.google.com.br **=>** 54.69.61.89
+
+## Funcionamento básico
+
+1. O usuário informa o endereço no browser
+2. O computador envia uma consulta DNS para o servidor local
+3. O servidor responde com o endereço IP
+4. O computador acessa o servidor a partir do IP obtido
+
+# HTTPS
+
+* HTTP + TLS - Transport Layer Security Protocol
+* HTTP + SSL - Security Sockets Layer Protocol
+
+## Certificado <> Protocolo
+
+"Certificado **usados com SSL / TLS**"
+
+## HTTPSeguro
+
+* Dados criptografados usando os protocolos TLS ou SSL.
+* Protege contra interceptação (MITM).
+  * O MITM - **Man-in-the-Middle** (em tradução literal, Homem-no-Meio) é um nome genérico para qualquer ataque virtual em que um usuário mal-intencionado, ou um hacker, intermedia a comunicação entre um cliente – site/aplicativo – e uma outra parte envolvida – servidor/API.
+* Criptografa todas as informações: URL, cookies e headers.
+* Usa certificados digitais.
+
+## Autoridades Certificadoras
+
+* Organizações que emitem e validam os certificados
 

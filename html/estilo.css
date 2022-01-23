@@ -1,0 +1,20 @@
+h1 {
+    background-color: #555;
+    color: #fff;
+    position: absolute;
+    top: 300px;
+    left: 40%;
+    font-size: 100px;
+}
+.fundoVermelho {
+    background-color: red;
+}
+#textoPrincipal {
+    background-color: blue;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+}
+.negrito {
+    font-weight: bold;
+}

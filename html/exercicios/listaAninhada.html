@@ -39,11 +39,14 @@
 
 <link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
 <script>
+    // Procurar por todo o documento a propriedade [click-pasta]    
     document.querySelectorAll('[click-pasta]').forEach(pasta => {
         pasta.onclick = (e) => {
+            // Capturar a proxima tag e tudo o que tiver dentro dela
             const ul = pasta.nextElementSibling
+            // Capturar a visibilidade da tag
             const d = ul.style.display
-
+            // Verificar se está visível ou não e lança para             
             if (d === 'none') {
                 ul.style.display = 'block'
             }

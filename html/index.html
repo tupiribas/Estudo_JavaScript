@@ -5,37 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercícios HTML</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
     <header>
         <h1>Exercícios HTML</h1>
     </header>
-    <nav>
-        <a href wm-nav="exercicios/teste.html">00 - TESTE</a><br>
-        <a href="exercicios/temp.html">01 - TESTE</a>
+    <nav class="navbar">
+        <div id="navegacao-navbar">
+            <a href="exercicios/teste.html">00 - TESTE</a>
+            <a href="exercicios/texto1.html">01 - Tags para Textos1</a>
+            <a href="exercicios/texto2.html">02 - Tags para Textos2</a>
+            <a href="exercicios/listas.html">03 - Listas</a>
+            <a href="exercicios/listaAninhada.html">04 - Lista Aninhada</a>
+        </div>
     </nav>
     <section id="conteudo">
 
     </section>
     <footer>
-        <br>
-        Aprendendo para WEB
+        <h2>Aprendendo para WEB</h2>
     </footer>
 
+<!--
     <script>
-        // Selecionando todas as tags 'a' com parâmetro personalizado 
-        document.querySelectorAll('[wm-nav]').forEach(link => {
+        // Selecionando todas as tags 'a' (com parâmetro personalizado)
+        document.querySelectorAll('a').forEach(link => {
             // captura o valor do conteudo da tag (vazio)
             const conteudo = document.getElementById("conteudo")
             // Caso o usuário clique no botão
             link.onclick = (e) => {
                 // Serve para previnir que a ação (navegação) ocorra! 
                 e.preventDefault() 
-                fetch(link.getAttribute('wm-nav'))
+                fetch(link.href)
                     .then(resp => resp.text()) // Adquire o valor textual do conteúdo html
                     .then(html => conteudo.innerHTML = html) // Armazena 
             }
         })
     </script>
+    -->
 </body>
 </html>

@@ -1,0 +1,65 @@
+<h1>Lista Aninhada</h1>
+
+<ul class="tree">
+    <li>
+        <span click-pasta id="pasta">Backend</span>
+        <ul>
+            <li>
+                <span click-pasta id="pasta">app</span>
+                <ul>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+            <li>
+                <span click-pasta id="pasta">config</span>
+                <ul>
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <span click-pasta id="pasta">Frontend</span>
+        <ul>
+            <li>
+                <span click-pasta id="pasta">public</span>
+                <ul>
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<script>
+    document.querySelectorAll('[click-pasta]').forEach(pasta => {
+        pasta.onclick = (e) => {
+            const ul = pasta.nextElementSibling
+            const d = ul.style.display
+
+            if (d === 'none') {
+                ul.style.display = 'block'
+            }
+            else {
+                ul.style.display = 'none'
+            }
+        }
+    })
+</script>
+
+<style>
+    #pasta {
+        padding: 1.9px;
+        margin: -10px;
+        background-color: rgb(85, 85, 85);
+        color: #fff;
+        border-radius: 1.5px;
+    }
+</style>

@@ -1,3 +1,4 @@
+/* Anterior 
 h1 {
     background-color: #555;
     color: #fff;
@@ -17,4 +18,32 @@ h1 {
 }
 .negrito {
     font-weight: bold;
+}
+*/
+body,
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(53, 53, 53);
+    color: #fff;
+}
+
+#conteudo {
+    margin: 15px;
+    margin: 10px;
+    padding: 10px 0px;
+}
+
+.navbar {
+    align-items: center;
+}
+
+#navegacao-navbar * {
+    border-radius: 3.5px;
+    display: flex;
+    padding: 10px;
+    margin: 20px;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    background-color: rgba(0, 26, 255, 0.5);
 }

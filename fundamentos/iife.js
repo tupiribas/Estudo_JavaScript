@@ -1,5 +1,5 @@
 // IIFE
-(function(nom) {
+(function (nom) {
     let nome = nom
     console.log(nome)
 })

@@ -21,7 +21,7 @@ console.log(aprovados);
 aprovados.splice(2, 2)
 console.log(aprovados);
 
-const algunsPilotos1 = aprovados.slice(2) // novo array
+const algunsPilotos1 = aprovados.slice(1) // novo array
 console.log(algunsPilotos1);
 
 const algunsPilotos2 = aprovados.slice(1, 4)

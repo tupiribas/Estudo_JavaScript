@@ -1,0 +1,56 @@
+<h1>Formulário</h1>
+
+<form action="http://localhost:3003/usuarios" method="POST">
+    <label>Nome</label>
+    <input type="text" name="nome">
+    <label>Sobrenome</label>
+    <input type="text" name="sobrenome">
+    <label>Sexo</label>
+    <div class="sexo">
+        <label>Masculino</label>
+        <input type="checkbox" name="isMaculino" click-radio id="radioSexoMasculino">
+        <label id="labelSexoFeminino">Feminino</label>
+        <input type="checkbox" name="isFeminino" click-radio id="radioSexoFeminino">
+    </div>
+    <label>Biografia</label>
+    <textarea name="bio" cols="30" rows="10"></textarea>
+    <label>Crie uma senha</label>
+    <input type="text" name="senhaVisivel">
+    <label>Digite novamente</label>
+    <input type="password" name="senhaInvisivel">
+    <button>Incluir</button>
+</form>
+
+<style>
+    input,
+    textarea {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .sexo {
+        display: flex;
+        margin: 10px;
+    }
+    #labelSexoFeminino {
+        margin-left: 10px;
+    }
+</style>
+
+<script>
+    document.querySelectorAll('[click-radio]').forEach(radio => {
+        radio.onclick = (e) => {
+            let radioSexoM = document.getElementById('radioSexoMasculino')
+            let radioSexoF = document.getElementById('radioSexoFeminino')
+
+            if (radioSexoF.checked && masculino == false) {
+                radioSexoM.checked = false
+                radioSexoF.checked = true
+            }
+            else {
+                radioSexoM.checked = true
+                radioSexoF.checked = false
+            }
+        }
+    })
+</script>
+

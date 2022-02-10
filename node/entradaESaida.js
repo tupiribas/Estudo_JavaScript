@@ -12,9 +12,10 @@ if (anonimo) {
 } 
 else {
     process.stdout.write('Informe seu nome: ')
+    // Após o usuário apertar enter...
     process.stdin.on('data', data => {
         const nome = data.toString()
-        
+
         process.stdout.write(`Seja bem-vindo(a) ${nome}!!\n`)
         process.exit()
     })

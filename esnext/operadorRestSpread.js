@@ -10,3 +10,4 @@ console.log(clone);
 const grupoA = [1, 2, 3, 4, 5]
 const grupoFinal = ['outros fulanos anteriores', ...grupoA]
 console.log(grupoFinal);
+

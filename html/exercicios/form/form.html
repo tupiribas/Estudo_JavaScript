@@ -1,24 +1,45 @@
 <h1>Formulário</h1>
 
-<form action="http://localhost:3003/usuarios" method="POST">
+<form method="POST">
+    <input type="hidden" name="id" value="1">
     <label>Nome</label>
     <input type="text" name="nome">
     <label>Sobrenome</label>
     <input type="text" name="sobrenome">
     <label>Sexo</label>
-    <div class="sexo">
-        <label>Masculino</label>
-        <input type="checkbox" name="isMaculino" click-radio id="radioSexoMasculino">
-        <label id="labelSexoFeminino">Feminino</label>
-        <input type="checkbox" name="isFeminino" click-radio id="radioSexoFeminino">
+    <div>
+        <input type="radio" name="sexo" value="masculino">Masculino
+        <input type="radio" name="sexo" value="feminino">Feminino
+        <input type="radio" name="sexo" value="outros" >Outros...
+        <label>Sexo</label>
+        <input type="text" name="outroSexo">
     </div>
+
+    <select name="estado">
+        <option value="">Selecione</option>
+        <option value="ba">Bahia</option>
+        <option value="sp">SãoPaulo</option>
+        <option value="rj">Rio de Janeiro</option>
+    </select>
+
     <label>Biografia</label>
     <textarea name="bio" cols="30" rows="10"></textarea>
     <label>Crie uma senha</label>
     <input type="text" name="senhaVisivel">
     <label>Digite novamente</label>
     <input type="password" name="senhaInvisivel">
-    <button>Incluir</button>
+    <input type="checkbox" name="ativo">Ativo
+
+    <select name="interesse" multiple size="6">
+        <option value="java">Java</option>
+        <option value="javascript">javascript</option>
+        <option value="php">PHP</option>
+        <option value="c">C</option>
+        <option value="python">Python</option>
+    </select>
+    
+    <button formaction="http://localhost:3003/usuarios">Incluir</button>
+    <button formaction="http://localhost:3003/usuarios/1">Editar</button>
 </form>
 
 <style>
@@ -27,30 +48,15 @@
         display: block;
         margin-bottom: 10px;
     }
-    .sexo {
+
+    label, button {
         display: flex;
-        margin: 10px;
     }
-    #labelSexoFeminino {
-        margin-left: 10px;
+
+    input[type="radio"],
+    input[type="checkbox"],
+    select {
+        display: inline;
+        margin-bottom: 15px;
     }
 </style>
-
-<script>
-    document.querySelectorAll('[click-radio]').forEach(radio => {
-        radio.onclick = (e) => {
-            let radioSexoM = document.getElementById('radioSexoMasculino')
-            let radioSexoF = document.getElementById('radioSexoFeminino')
-
-            if (radioSexoF.checked && masculino == false) {
-                radioSexoM.checked = false
-                radioSexoF.checked = true
-            }
-            else {
-                radioSexoM.checked = true
-                radioSexoF.checked = false
-            }
-        }
-    })
-</script>
-

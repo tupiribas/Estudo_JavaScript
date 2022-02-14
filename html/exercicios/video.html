@@ -1,0 +1,98 @@
+<video id="meuVideo" width="800px" autoplay controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    Seu browser não suporta a tag de vídeo.
+</video>
+
+<div wb-progresso="meuVideo" class="progresso">
+    <div></div>
+    <span id="tempoAtual">00:00:00</span>/<span id="tempoFinal">00:00:00</span>
+</div>
+
+<div>
+    <button wb-play="meuVideo">|></button>
+    <button wb-pause>||</button>
+</div>
+
+<style>
+    .progresso {
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+
+    .progresso > div {
+        background-color: red;
+        color: white;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 0%;
+    }
+    .progresso > span {
+        display: inline;
+    }
+</style>
+
+
+<script>
+    // Formata o tempo para deizar mais visível
+    function formatandoTempoDeVideo(tempo) {
+        let horas = Math.floor(tempo / 3600)
+        let minutos = Math.floor((tempo - (horas * 3600)) / 60)
+        let segundos = Math.floor(tempo % 60)
+
+        if (horas < 10) horas = '0' + horas
+        if (minutos < 10) minutos = '0' + minutos
+        if (segundos < 10) segundos = '0' + segundos
+
+        return horas + ':' + minutos + ':' + segundos
+    }
+
+    const meuVideo = document.getElementById('meuVideo');
+
+    function configVideo(id) {
+        const playBtn = document.querySelector('[wb-play]');
+        const pauseBtn = document.querySelector('[wb-pause]');
+        // Impossibilitar o clique com o botão direito
+        id.oncontextmenu = () => false
+
+        // Iniciar o vídeo
+        playBtn.onclick = () => {
+            meuVideo.play()
+
+            // Atualiza as informações do vídeo
+            meuVideo.ontimeupdate = () => {
+                // Mostrar o tempo do vídeo comparado ao tempo final do video
+                getTempo()
+                // Barra de progresso 
+                getProgressoDoVideo()
+            }
+
+            // Pausar vídeo
+            pauseBtn.onclick = e => meuVideo.pause()
+
+            // Mostra tempo do vídeo
+            function getTempo() {
+                // Formata e atribui o tempo para mostrar ao usuário a duração final do vídeo
+                document.getElementById('tempoFinal').
+                    innerHTML = formatandoTempoDeVideo(meuVideo.duration)
+                // Formata e atribui o tempo para mostrar ao usuário a duração atual do vídeo
+                document.getElementById('tempoAtual').
+                    innerHTML = formatandoTempoDeVideo(meuVideo.currentTime)
+            }
+        } 
+    }
+    
+    function getProgressoDoVideo() {
+        let atual = meuVideo.currentTime
+        const final = meuVideo.duration
+        // Cálculo para achar a porcentagem do tempo do vídeo
+        let porcentagemDoProgresso = (Math.round(atual * 100) / final).toFixed(0);
+        
+        // Atribuição ao progresso do vídeo
+        document.querySelector('[wb-progresso] > div').style.width = porcentagemDoProgresso + "%"
+    }
+
+    configVideo(meuVideo)
+</script>

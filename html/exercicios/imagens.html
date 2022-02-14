@@ -1,0 +1,119 @@
+<div wb-carrosel class="carrosel">
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+            alt="Muro da Cidade"
+            width="513px" height="342px"
+            title="Muro da Cidade por Tarso Bessa">
+    </p>
+
+    <p>
+        <img src="https://assets.b9.com.br/wp-content/uploads/2015/08/kuat-gif.gif" 
+            alt="Gato"
+            width="auto" height="342px"
+            title="Gato feito por alguem">
+    </p>
+
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" 
+            alt="Rio de janeiro"
+            height="342px"
+            title="Rio de Janeiro por Tarso Bessa">
+    </p>
+
+    <p class="cidade"></p>
+
+    <!--Essa imagem será exibida apenas para resoluções acima de 600px-->
+    <p>
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo.png"
+            media="(min-width: 600px)">
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">
+        </picture>
+    </p>
+</div>
+
+<script>
+    function mover(elemento, inicio, fim, passo, callback, delay = 7) {
+        const novoInicio = inicio - passo
+        // Verifica se chegou ao local da página não visível
+        if (novoInicio >= fim) {
+            elemento.style.left = novoInicio + 'px'
+            // Delay na passagem do elemento
+            setTimeout(() => mover(elemento, novoInicio, fim, passo, callback), delay);
+        }
+        else {
+            callback()
+        }
+    }
+    
+    // const p = document.querySelector('[wb-carrosel] > p')
+    // p.style.display = 'block'
+    // mover(p, 1500, -520, 5, () => {}, 20)
+
+    function slider() {
+        // atribuir todos as tags (<p>) dentro da div (wb-carrosel)
+        const elemento = document.querySelectorAll('[wb-carrosel] > p')
+        // Transformar em array
+        const slides = Array.from(elemento)
+        // Mostrar os elementos começando por zero
+        exibirSlide(slides, slides[0])
+    }
+
+    function exibirSlide(slides, slide) {
+        // Mostrar elemento
+        slide.style.display = 'block'
+        // Largura da página
+        const inicio = innerWidth
+        // Largura da tag (<p>)
+        const fim = -slide.clientWidth
+        
+        // Sendo a tag (<p>) relativa, o inicio começa após a borda da tela
+        slide.style.left = `${inicio}px`
+        // Movimenta o elemento, após o final do movimento, ele desaparece e passa para o próximo elemento
+        mover(slide, inicio, fim, 5, () => {
+            slide.style.left = 'none'
+            exibirSlide(slides, getProximo(slides, slide))
+        }, 8.5)
+    }
+    // Contabiliza o movimento, caso chege ao ultimo indice, ele volta para o incice [0]
+    function getProximo(lista = [], atual) {
+        const i = lista.indexOf(atual) + 1
+        return i < lista.length ? lista[i] : lista[0]
+    }
+
+    slider()
+</script>
+
+<style>
+    p {
+        position: absolute;
+        display: none;
+    }
+    .setas {
+        align-items: center;
+        padding-top: 500px;
+        display: inline-block;
+        margin-left: 50%;
+    }
+    .circular {
+        width: 513px;
+        background-color:#444;
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    div p {
+        margin-bottom: -10;
+    }
+
+    .cidade {
+        width: 512px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+</style>

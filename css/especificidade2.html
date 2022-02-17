@@ -6,6 +6,19 @@
     <title>Especificidade CSS</title>
     <style>
         /* https://specificity.keegan.st/ */
+        /*
+            1. Inline
+            2. ID
+            3. Classe, Pseudo-Classe, atributo
+            4. Elemento, Pseudo-Elementos
+        */
+        body { font-size: 40px;}
+         /* Nível de especificidade: 1 */
+        div { background-color: #00b; color: #fff }
+        /* Nível de especificidade: 11 - é implementado pela ordem de chegada. */
+        div[wm-cor] { background-color: darkorange; }
+        div.estilo { background-color: green; }
+        div:hover { background-color: purple; }
     </style>
 </head>
 

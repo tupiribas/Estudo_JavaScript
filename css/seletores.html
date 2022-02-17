@@ -6,18 +6,70 @@
     <title>CSS Selectors</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        #aninhado > div {
+            color: rgb(255, 255, 255);
+            background-color: rgb(59, 180, 59);
+        }
+        /*Decendente*/
+        #inicio section {
+            color: #ff0;
+            background-color: #f77;
+        }
+
+        p + ul {
+            color: rgb(0, 4, 255);
+            background-color: rgb(255, 207, 119);
+        }
+
+        p ~ ol {
+            color: rgb(0, 4, 255);
+            background-color: rgb(255, 207, 119);
+        }
+        /*Por propriedade*/
+        /*[feira*=sa]*/
+        [feira~=escritorio] {
+            color: aqua;
+            background-color: brown;
+        }
+        [feira~=empresa] {
+            color: aqua;
+            background-color: brown;
+        }
+        [feira=casa] {
+            color: crimson;
+            background-color: darkblue;
+        }
+        /*Pegando TODAS as tags pares dentro da section*/
+        /*section > :nth-child(even) impar*/
+        /*section > :nth-child(odd) par*/
+        /*section > :nth-child(odd), ul*/
+        section > :nth-child(odd), ul, p {
+            color: white;
+            background-color: indianred;
+        }
+        /*Pega tags do tipo span*/
+        section > span:nth-of-type(2) {
+            color:darkturquoise;
+            background-color: midnightblue;
+        }
     </style>
 </head>
 
 <body>
     <div class='tag'>
+        <nav class="tag">
+            <a href="UmLink.com">Link</a>
+        </nav>
         <div class='tag'>
-            <p class='tag'>1</p>
-            <ul class='tag' feira='casa'>
-                <li>Arroz</li>
-                <li>Feijão</li>
-            </ul>
+            <div id="inicio">
+                <section class="tag">
+                    <p class='tag'>1</p>
+                    <ul class='tag' feira='casa'>
+                        <li>Arroz</li>
+                        <li>Feijão</li>
+                    </ul>
+                </section>
+            </div>
             <ul class='tag' feira='escritorio empresa'>
                 <li>Café</li>
                 <li>Água</li>
@@ -28,11 +80,13 @@
                 <li>Ana</li>
             </ol>
             <div id='aninhado' class='tag'>
+                <p>Aninhado</p>
                 <div class="tag">
                     <section class='tag'>
                         <span class='tag'>1</span>
                         <p class='tag'>2</p>
                         <span class='tag'>3</span>
+                        <p class='tag'>4</p>
                     </section>
                 </div>
             </div>

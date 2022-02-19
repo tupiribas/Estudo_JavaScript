@@ -25,6 +25,7 @@ body,
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: rgb(53, 53, 53);
     color: #fff;
+    text-align: center;
 }
 
 #conteudo {
@@ -34,16 +35,23 @@ body,
 }
 
 .navbar {
+    display: inline-block;
     align-items: center;
+    justify-content: center;
 }
 
-#navegacao-navbar * {
+#navegacao-navbar > a {
+    display: inline-block;
+    min-width: 198px;
     border-radius: 3.5px;
-    display: flex;
     padding: 10px;
-    margin: 20px;
-    align-items: center;
-    text-decoration: none;
-    justify-content: center;
+    margin-bottom: 20px;
+    margin-right: 20px;
     background-color: rgba(0, 26, 255, 0.5);
+}
+
+a {
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
 }

@@ -6,7 +6,6 @@
     <title>Texto</title>
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <style>
-        /* ... */
         * {
             margin: 0;
         }
@@ -15,6 +14,55 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        p {
+            /* Valores padões */
+            font-size: 1em;
+            font-size: 100%;
+            font-size: 16px;
+            font-size: 12pt;
+
+            /* Unidades absolutas */
+            font-size: 100px;
+            font-size: 72pt; /* pontos */
+            font-size: 1in; /* polegadas */
+
+            /* Unidades relativas */
+            font-size: 2.2em;
+            font-size: 5.4rem;
+            font-size: 10vh;
+            font-size: 5vw;
+
+            font-family: Georgia, serif;
+            font-family: Verdana, sans-serif;
+
+            font-weight: 50;
+            font-style: italic;
+            text-transform: uppercase;
+            word-spacing: 10px;
+            letter-spacing: 20px;
+            line-height: 2.5em;
+            text-align: center;
+        }
+
+        .botao {
+            font-size: 28px;
+            text-decoration: none;
+            padding: 10px 30px;
+            border-radius: 25px;
+        }
+
+        .destaque {
+            background: tomato;
+            color: #fff;
+            box-shadow: 2px 2px 1px 1px #555555a9;
+        }
+
+        .destaque:active, .destaque:hover {
+            box-shadow: none;
+            color: rgb(245, 245, 245);
+            background: rgb(255, 114, 89);
         }
     </style>
 </head>

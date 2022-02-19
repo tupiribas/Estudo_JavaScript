@@ -4,11 +4,26 @@
     <meta charset="UTF-8">
     <title>Overflow</title>
     <style>
+        /* Estilizando barra de rolagem */
+        /* ::-webkit-scrollbar-track {
+            background-color: #F4F4F4;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            background: #F4F4F4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dad7d7;
+        } */
+
         div {
             font-size: 40px;
             height: 100px;
             width: 260px;
             border: solid 3px;
+            overflow: hidden;
+            /* overflow: scroll; */
+            overflow-x: scroll;
         }
     </style>
 </head>

@@ -150,16 +150,33 @@
     </header>
 
     <script>
-        document.querySelectorAll('a').forEach(elemento => {
-            const botao = document.querySelector('a > img')
+        function configPage() {
+            // Mudar a cor o background do botao início após pressionar a logo
+            document.querySelectorAll('a > img').forEach(elemento => {
+                const botao = document.querySelector('li > a')
+                
+                //Mudar a cor do botao inicio
+                elemento.onclick = (e) => {
+                    botao.style.background = '#008b8b'
+                    botao.style.color = '#000'
+                }
+            })
 
-            
-            console.log(botao.innerHTML);
-            elemento.onclick = (e) => {
-                botao.style.background = '#008b8b'
-                botao.style.color = '#000'
-            }
-        })
+            document.querySelectorAll('li > a').forEach(elemento => {
+                const paginas = []
+                const nomeDaPagina = elemento.href.split('#')[1]
+
+                paginas.push(nomeDaPagina)
+
+                elemento.onclick = (e) => {
+                    console.log(pagina[nomeDaPagina]);
+                    elemento.style.background = '#008b8b'
+                    elemento.style.color = '#000'
+                }
+            })
+        }
+
+        configPage()
     </script>
 </body>
 

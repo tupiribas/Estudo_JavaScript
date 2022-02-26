@@ -9,25 +9,103 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: rgba(85, 85, 85, 0.698);
+            background-color: lightgray;
+            font-family: 'Oswald', sans-serif;
             margin: 0;
         }
 
-        @media (max-width: 455px) {
+        .cabecalho {
+            height: 80px;
+            padding: 10px;
+            background: #555;
+            border-bottom: solid 5px rgb(1, 155, 155);
+            box-sizing: content-box;
+        }
+
+        .menu-toggle {
+            float: right;
+            color: #eee;
+            background-color: #555;
+            border: solid 1px #777;
+            border-radius: 5px;
+            height: 40px;
+            padding: 10px 20px;
+            margin: 5px;
+        }
+
+        .logo {
+            display: inline-block;
+            height: 60px;
+        }
+
+        .logo img {
+            height: 100%
+        }
+
+        .menu {
+            display: inline-block;
+            vertical-align: top;
+            height: 80px;
+            padding: 10px;
+        }
+
+        .menu li {
+            display: inline-block;
+        }
+
+        .menu a,
+        .autenticacao a {
+            text-decoration: none;
+            color: white;
+            vertical-align: top;
+            font-size: 1.3em;
+            padding: 15px;
+        }
+
+        .autenticacao {
+            float: right;
+            height: 80px;
+            padding: 25px;
+        }
+
+        .menu a:hover,
+        .menu a.select {
+            background-color: #008b8b;
+            color: black;
+        }
+
+        .destaque {
+            background: #f50a31;
+            color: white;
+        }
+
+        #inacessivel {
+            display: none;
+        }
+
+        @media (max-width: 450px) {
+            header {
+                display: none;
+            }
+
+            #inacessivel {
+                display: inline-block;
+            }
+        }
+
+        @media (max-width: 420px) {
             .menu-toggle {
                 display: none;
             }
         }
 
         @media (max-width: 736px) {
-            .menu-toggle {
-                position: absolute;
-                top: 2.5em;
-                right: 25px;
+            .menu {
+                display: none;
             }
 
-            .cabecalho>nav>ul {
-                display: none;
+            .menu-toggle {
+                display: inline-block;
             }
         }
 
@@ -37,82 +115,10 @@
             }
         }
 
-        @media (max-width: 949px) {
+        @media (max-width: 950px) {
             .autenticacao {
                 display: none
             }
-        }
-
-        .cabecalho>div {
-            text-align: left;
-            margin: 0;
-            padding: 10px;
-            background-color: #555;
-        }
-
-        .cabecalho>nav>ul {
-            position: absolute;
-            top: 1.1em;
-            left: 325px;
-        }
-
-        .cabecalho>.autenticacao {
-            position: absolute;
-            top: 2em;
-            right: 25px;
-        }
-
-        .cabecalho {
-            height: 89px;
-            background-color: darkcyan;
-        }
-
-        .autenticacao>.botao {
-            background: darkcyan;
-            color: #fff;
-            box-shadow: 2px 2px 1px 1px #555555a9;
-            padding: 10px 30px;
-            border-radius: 25px;
-        }
-
-        .autenticacao>.botao:hover {
-            box-shadow: none;
-            color: rgb(0, 0, 0);
-            background: rgb(6, 165, 165);
-        }
-
-        aside>a {
-            display: inline;
-            padding: 10px;
-            text-align: center;
-        }
-
-        ul {
-            text-align: center;
-        }
-
-        li {
-            display: inline;
-            padding: 10px;
-        }
-
-        img {
-            height: 60px;
-        }
-
-        li,
-        a {
-            font-size: 20px;
-            color: aliceblue;
-            text-decoration: none;
-            list-style: none;
-            padding: 15px 10px;
-            margin: 0px;
-        }
-
-        li>a:hover {
-            background-color: #008b8b;
-            color: black;
         }
     </style>
 </head>
@@ -149,31 +155,28 @@
         </aside>
     </header>
 
+    <h1 id="inacessivel">Não é possivel navegar com o seu despositivo! Utilize outro.</h1>
+
     <script>
         function configPage() {
-            // Mudar a cor o background do botao início após pressionar a logo
-            document.querySelectorAll('a > img').forEach(elemento => {
-                const botao = document.querySelector('li > a')
+            /**
+             * Muda o background do botão, na barra de navegação, quando for clicado.
+             * */
+            window.onhashchange = function (e) {
+                // Captura a URL atual e antiga
+                const oldUrl = e.oldURL.split('#')[1]
+                const newUrl = e.newURL.split('#')[1]
                 
-                //Mudar a cor do botao inicio
-                elemento.onclick = (e) => {
-                    botao.style.background = '#008b8b'
-                    botao.style.color = '#000'
-                }
-            })
-
-            document.querySelectorAll('li > a').forEach(elemento => {
-                const paginas = []
-                const nomeDaPagina = elemento.href.split('#')[1]
-
-                paginas.push(nomeDaPagina)
-
-                elemento.onclick = (e) => {
-                    console.log(pagina[nomeDaPagina]);
-                    elemento.style.background = '#008b8b'
-                    elemento.style.color = '#000'
-                }
-            })
+                const img = document.querySelector('.logo > a > img')
+                const inicio = document.querySelector(`a[href='#inicio']`)
+                // Selectiona o elemento atual e anterior, clicado
+                const oldLink = document.querySelector(`.menu a[href='#${oldUrl}']`)
+                const newLink =  document.querySelector(`.menu a[href='#${newUrl}']`)
+                // Removendo e adicionando a propriedade class, mudando o estilo do botao
+                oldLink && oldLink.classList.remove('select')
+                newLink && newLink.classList.add('select')
+                img && inicio.classList.add('select')
+            }
         }
 
         configPage()

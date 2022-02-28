@@ -13,6 +13,9 @@
         }
         
         .cabecalho {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             background: #333;
             color: #fff;
             border-bottom: solid 5px #4faddb;
@@ -23,12 +26,17 @@
             height: 50px;
         }
         
+        .menu {
+            flex-grow: 10;
+        }
+
         .menu ul {
+            display: flex;
             list-style: none;
             margin: 0;
             padding: 0;
         }
-        
+
         .cabecalho a {
             text-decoration: none;
             color: #eee;

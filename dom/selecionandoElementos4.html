@@ -22,7 +22,36 @@
         <p>Fim</p>
     </div>
     <script>
-        // ...
+        function log() {
+            console.log(this);
+        }
+
+        // Facilitar a visualização - NÃO FAZ PARTE DA API 
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log() // Coletar o pai do elemento
+        lista.childNodes.log() /// Efeito colateral - <ul><li>Pedro</li><li>Ana</li><li>Bia</li></ul>
+
+        const primeiro = lista.firstChild // Primeiro elemento - espaço vazio da ul
+
+        primeiro.log() 
+        primeiro.nextSibling.log() // O proximo elemento - o primeiro li
+
+        const ultimo = lista.lastChild // ultimo elemento - espaço vazio da ul
+
+        ultimo.log()
+        ultimo.previousSibling.log() // O elemento anterior ao ultimo elemento - o terceiro li
+
+        lista.children.log() // retorna um HTMLCollection - Mostra todos os filhos da ul, os li
+        lista.firstElementChild.log() // Retorna o própio li
+        lista.parentNode.previousElementSibling.log() // lista > div da lista > div anterior
+        lista.parentNode.nextElementSibling.log() // lista > div da lista > div posterior
+
+        document.querySelectorAll('div ul li').log()
     </script>
 </body>
 

@@ -10,14 +10,31 @@
 <body class='conteudo exercicio'>
     <div>
         <label for="compras">Compras</label>
-        <ul id="compras" destino='escritório' data-urgencia="5">
+        <ul id="compras" destino='escritório' data-urgencia="5" data-blabla="opa">
             <li>Café</li>
             <li>Água</li>
             <li>Copo Descartável</li>
         </ul>
     </div>
     <script>
-        // ...
+        const lista = document.querySelector('div ul[destino="escritório"]')
+        console.log('Elementos ul.....');
+        console.log('childNode:', lista.childNodes);
+        console.log('destino:', lista.id); // valor do id
+        console.log('getAttribute:', lista.getAttribute('destino')); // mostrar o valor do atributo
+        console.log('hasAttribute:', lista.hasAttribute('destino')); // verificar existência de um atributo em uma tag
+        lista.setAttribute('destino', 'empresa') // Modificar o valor do atributo
+        lista.setAttribute('status', 'aberto')
+        lista.removeAttribute('destino')
+        console.log(lista.dataset.urgencia);
+        lista.dataset.urgencia = 22
+        console.log(lista.dataset.urgencia);
+
+        // cuidado
+        const label = document.querySelector('label')
+        // console.log(label.for);
+        console.log(label.htmlFor);
+        console.log(label.getAttribute('for'));
     </script>
 </body>
 

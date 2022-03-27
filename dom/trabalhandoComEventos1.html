@@ -9,9 +9,22 @@
 
 <body class="conteudo exercicio">
     <div>
-        <a href="https://google.com.br">Google</a>
+        <!-- onclick="navegarEm3segundos(event)" -->
+        <a tempo-de-espera href="https://google.com.br">Google</a>
     </div>
     <script>
-        // ...
+        function navegarEm3segundos(event) {
+            event.preventDefault();
+            setInterval(() => {
+                const link = event.target
+                window.location.href = link.href
+            }, 3000);
+        }
+
+        // const a = document.querySelector('a')
+        // a.onclick = navegarEm3segundos
+
+        const a = document.querySelector('[tempo-de-espera]')
+        a.onclick = navegarEm3segundos
     </script>
 </body>

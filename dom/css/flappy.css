@@ -20,7 +20,7 @@
 
 .passaro {
     position: absolute;
-    left: 45%;
+    left: calc(50% - 30px);
     width: 60px;
 }
 

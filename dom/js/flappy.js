@@ -128,7 +128,7 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
             }
         
             // Notificar o usuário que ele cruzou a barreira
-            const meio = largura / 2
+            const meio = largura / 2.5
             const cruzouOMeio = par.getPosicaoXDaBarrereira() + deslocamento >= meio 
                 && par.getPosicaoXDaBarrereira() < meio
             if (cruzouOMeio) notificarPonto()
@@ -136,12 +136,62 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
     }
 }
 
-const barreiras = new Barreiras(700, 1200, 200, 400)
+/**
+ * Informações iniciais do pássaro
+ * @param alturaDoJogo Altura da área do jogo
+ */
+function Passaro(alturaDoJogo) {
+    let voando = false
+    
+    this.elemento = novoElemento('img', 'passaro')
+    this.elemento.src = 'imgs/passaro.png'
+
+    /**
+     * Mostrar a posição atual do pássaro
+     */
+    this.getPosicaoYDoPassaro = () => parseInt(this.elemento.style.bottom.split('px')[0])
+    /**
+     * Altera a posição do pássaro variando a posição dele no eixo vertical.
+     * @param posicao Posição do eixo horizontal do pássaro
+     */
+    this.setPosicaoYDoPassaro = (posicao) => this.elemento.style.bottom = `${posicao}px`
+
+    window.onkeydown = e => voando = true
+    window.onkeyup = e => voando = false
+
+    /**
+     * Faz a movimentação do pássaro
+     */
+    this.animar = () => {
+        // Quando o passaro estiver em movimento 
+        const novaAltura = this.getPosicaoYDoPassaro() + (voando ? 8 : -5)
+        const alturaMaxima = alturaDoJogo - this.elemento.clientHeight
+        
+        // Posição inicial do pássaro
+        this.setPosicaoYDoPassaro(alturaDoJogo / 2)
+        
+        // Impede do passaro ultrapassar o limite do jogo
+        if (novaAltura <= 0) {
+            this.setPosicaoYDoPassaro(0)
+        }
+        else if (novaAltura >= alturaMaxima) {
+            this.setPosicaoYDoPassaro(alturaMaxima)
+        }
+        else {
+            this.setPosicaoYDoPassaro(novaAltura)
+        }
+    }
+}
+
+const barreiras = new Barreiras(650, 1200, 200, 400)
+const passaro = new Passaro(650)
 const areaDoJogo = document.querySelector('[wm-flappy]')
-console.log(areaDoJogo);
+
+areaDoJogo.appendChild(passaro.elemento)
 barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
 setInterval(() => {
-    const c = new ParDeBarreiras(700, 200, 800)
     barreiras.animar()
-    console.log(c.getLarguraDoJogo());
+    passaro.animar()
 }, 20);
+
+

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
+    <meta>
     <title>Flappy Bird</title>
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="stylesheet" href="css/flappy.css">
@@ -10,7 +11,23 @@
 
 <body class="conteudo">
     <h1>Flappy Bird</h1>
-    <div wm-flappy></div>
+    <div wm-flappy>
+        <img class="passaro" src="./imgs/passaro.png" alt="passaro">
+
+        <div class="par-de-barreiras">
+            <!-- Barreira superior -->
+            <div class="barreira">
+                <div class="corpo"></div>
+                <div class="borda"></div>
+            </div>
+            <!-- Barreira inferior -->
+            <div class="barreira">
+                <div class="borda"></div>
+                <div class="corpo"></div>
+            </div>
+        </div>
+        <div class="progresso">100</div>
+    </div>
     <script src="js/flappy.js"></script>
 </body>
 

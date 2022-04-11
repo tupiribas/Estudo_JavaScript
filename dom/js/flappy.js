@@ -200,6 +200,49 @@ function Progresso() {
 }
 
 /**
+ * Valida o estado de sobreposição entre dois elementos.
+ * @param elementoA Primeiro elemento
+ * @param elementoB Segundo elemento
+ * @returns verdadeiro ou falso (boolean)
+ */
+function estaoSobrepostos(elementoA, elementoB) {
+    const a = elementoA.getBoundingClientRect()
+    const b = elementoB.getBoundingClientRect()
+
+    const ladoDireitoA = a.left + a.width
+    const ladoDireitoB = b.left + b.width
+    const inferiorA = a.top + a.height 
+    const inferiorB = b.top + b.height
+
+    const colisaoHorizontal = ladoDireitoA >= b.left && ladoDireitoB >= a.left
+    const colisaoVertical = inferiorA >= b.top && inferiorB >= a.top
+
+    return colisaoHorizontal && colisaoVertical
+}
+
+/**
+ * Valida a colisão entre os objetos.
+ * @param passaro Objeto Passaro
+ * @param  barreiras Objeto de colisão
+ * @returns 
+ */
+function colidiu(passaro, barreiras) {
+    let colidiu = false
+
+    barreiras.pares.forEach(parDeBarreiras => {
+        // Qual objeto foi sofreu colisão
+        if (!colidiu) {
+            const superior = parDeBarreiras.superior.elemento
+            const inferior = parDeBarreiras.inferior.elemento
+
+            colidiu = estaoSobrepostos(passaro.elemento, superior) 
+                || estaoSobrepostos(passaro.elemento, inferior)
+        }
+    })
+    return colidiu
+}
+
+/**
  * Startar a aplicação
  */
 function FlappyBird() {
@@ -222,9 +265,13 @@ function FlappyBird() {
 
     this.start = () => {
         // loop do jogo
-        const tremporizador = setInterval(() => {
+        const temporizador = setInterval(() => {
             barreiras.animar()
             passaro.animar()
+
+            if (colidiu(passaro, barreiras)) {
+                clearInterval(temporizador)
+            }
         }, 20)
     }
 }

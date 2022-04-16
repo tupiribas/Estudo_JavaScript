@@ -33,4 +33,4 @@ app.post('./upload', (req, resp) => {
 })
 
 app.get('/teste', (req, res) => res.send('Ok'))
-app.listen(8000, () => console.log('Servidor inicializado.'))
+app.listen(8080, () => console.log('Servidor inicializado.'))

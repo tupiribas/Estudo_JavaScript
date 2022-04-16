@@ -41,5 +41,17 @@ app.post('/formulario', (req, resp) => {
     })
 })
 
+// Axios
+app.get('/parOuImpar', (req, resp) => {
+    // Formas de receber dados
+    // req.body
+    // req.query /parOuImpar?numero=numero
+    // req.params /parOuImpar/:numero (:2)
+    const par = parseInt(req.query.numero) % 2 === 0
+    resp.send({
+        resultado: par ? 'Par' : 'Impar'
+    })
+})
+
 app.get('/teste', (req, res) => res.send('Ok'))
 app.listen(8080, () => console.log('Servidor inicializado.'))

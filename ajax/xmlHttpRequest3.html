@@ -11,6 +11,64 @@
     <h1>Estados</h1>
 
     <script>
-        // ...
+        function ajax(config) {
+            const xhr = new XMLHttpRequest();
+            xhr.open(config.metodo, config.url, true);
+
+            xhr.onreadystatechange = e => {
+                if (xhr.readyState === 4 && xhr.status === 200) { 
+                    config.sucesso(xhr.responseXML)
+                }
+                else if (xhr.status >= 400) { 
+                    config.erro({ codigo: xhr.status, 
+                        texto: xhr.statusText 
+                    }) 
+                }
+            }
+
+            xhr.send() // Envio da requisição
+        }
+
+        function criarTabelaDosEstados(estados) {
+            const linhas = estados.map(estado => {
+                const tdId = document.createElement('td')
+                tdId.innerHTML = estado.id.value
+
+                const tdNome = document.createElement('td')
+                tdNome.innerHTML = estado.nome.value
+
+                const tdSigla = document.createElement('td')
+                tdSigla.innerHTML = estado.sigla.value
+
+                const tr = document.createElement('tr')
+
+                // Adicionando os dados á linha
+                tr.appendChild(tdId)
+                tr.appendChild(tdNome)
+                tr.appendChild(tdSigla)
+
+                return tr
+            })
+
+            const tabela = document.createElement('table')
+            linhas.forEach(linha => tabela.appendChild(linha))
+            document.body.appendChild(tabela)
+        }
+
+        ajax({
+            url: "./dados/estados.xml",
+            metodo: "GET",
+            sucesso(resposta) {
+                const estados = resposta.getElementsByTagName('estado')
+                const itens = Array.from(estados).map((item) => item.attributes)
+                
+                criarTabelaDosEstados(itens)
+            },
+            erro(e) {
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)
+                document.body.appendChild(msg)
+            }
+            
+        })
     </script>
 </body>

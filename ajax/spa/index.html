@@ -25,6 +25,36 @@
     </nav>
     <div class="pagina"></div>
     <script>
-        // ...
+        function navegarViaAjax(url, seletor, push = true) {
+            if (!url || !seletor) return
+            const elemento = document.querySelector(seletor)
+            // Capturar o html da página
+            fetch(url)
+                .then(resp => resp.text())
+                .then(html => {
+                    elemento.innerHTML = html
+                    // Adiciona na url do navegador o link da página
+                    if (push) history.pushState({ seletor }, null, url)
+                })
+        }
+
+        document.querySelectorAll('[wm-link]').forEach(link => {
+            const url = link.attributes['wm-link'].value
+            const seletorDestino = link.attributes['wm-destino'].value
+
+            link.onclick = (e) => {
+                e.preventDefault()
+                navegarViaAjax(url, seletorDestino)
+            }
+        })
+
+        // Retirar da pilha do histórico
+        window.onpopstate = e => {
+            if (e.popstate) {
+                navegarViaAjax(window.location.href, e.state.seletor, false)
+            }
+        }
+
+        // Para forçar a passagem do index, deve ser feito um tratamento no servidor ex.:http://localhost:8080/spa/series.html
     </script>
 </body>

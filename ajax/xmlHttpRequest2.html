@@ -22,6 +22,44 @@
     <div class="progresso"></div>
 
     <script>
-        // ...
+        function ajaxUpload(config) {
+            const xhr = new XMLHttpRequest();
+            
+            if (xhr.upload) {
+                // Monitorar o progresso do upload
+                xhr.onprogress = e => {
+                    // Progresso do upload
+                    const atual = e.loaded
+                    const total = e.total
+
+                    const progressoUpload = (Math.floor(atual / total * 100)) + "%"
+                    config.progresso({ atual, total, progressoUpload })
+                }
+            }
+
+            xhr.open(config.metodo, config.url, true)
+            xhr.send(config.formData) // ERRO 404
+        }
+
+        function barraDeProgresso(dados) {
+            const progresso = document.querySelector('.progresso');
+            progresso.innerHTML = JSON.stringify(dados)
+        }
+
+        // Qunado for clicado o botão de buscar o arquivo
+        document.querySelector("input[type=file]").onchange = e => {
+            const formData = new FormData()
+            const inputFile = e.target
+            formData.append(inputFile.name, inputFile.files[0]) // input -> name="arquivo"
+
+            ajaxUpload({
+                url: "upload",
+                metodo: "POST",
+                formData: formData,
+                progresso(dados) {
+                    barraDeProgresso(dados)
+                }
+            })
+        }
     </script>
 </body>

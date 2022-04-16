@@ -32,5 +32,14 @@ app.post('./upload', (req, resp) => {
     })
 })
 
+// Recebendo dados do formulário
+app.post('/formulario', (req, resp) => {
+    resp.send({
+        // Armazena os dados do front e acrecenta o id
+        ...req.body,
+        id: 1
+    })
+})
+
 app.get('/teste', (req, res) => res.send('Ok'))
 app.listen(8080, () => console.log('Servidor inicializado.'))

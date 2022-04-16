@@ -11,6 +11,36 @@
     <h1>Estados</h1>
 
     <script>
-        // ...
+        const url = './dados/estados.json'
+        fetch(url)
+            .then(resp => resp.json())
+            .then(estados => {
+                const linhas = estados.map(est => {
+                    const tdId = document.createElement('td')
+                    const tdNome = document.createElement('td')
+                    const tdSigla = document.createElement('td')
+                    const tr = document.createElement('tr')
+
+                    tdId.innerHTML = est.id
+                    tdNome.innerHTML = est.nome
+                    tdSigla.innerHTML = est.sigla
+
+                    tr.appendChild(tdId)
+                    tr.appendChild(tdNome)
+                    tr.appendChild(tdSigla)
+
+                    return tr
+                })
+
+                const table = document.createElement('table')
+                linhas.forEach(linha => table.appendChild(linha))
+                document.body.appendChild(table)
+                
+                // Criar uma lista
+                // const nomes = estados.reduce(
+                //     (texto, estado) => texto + `<li>${estado.nome}</li>`, '' 
+                // )
+                // document.body.insertAdjacentHTML('beforeend', `<ul>${nomes}</ul>`)
+            })
     </script>
 </body>

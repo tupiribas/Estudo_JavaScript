@@ -36,32 +36,17 @@
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
 /******/ 		}
 /******/ 	};
 /******/
 /******/ 	// define __esModule on exports
 /******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -91,9 +76,9 @@
   !*** ./src/assets/css/estilo.css ***!
   \***********************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/assets/css/estilo.css?");
+eval("throw new Error(\"Module build failed: ModuleBuildError: Module build failed: Error: `sass-loader` requires `node-sass` >=4. Please install a compatible version.\\n    at Object.sassLoader (C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\sass-loader\\\\lib\\\\loader.js:31:19)\\n    at C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\webpack\\\\lib\\\\NormalModule.js:252:20\\n    at C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:367:11\\n    at C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:233:18\\n    at runSyncOrAsync (C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:143:3)\\n    at iterateNormalLoaders (C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:232:2)\\n    at Array.<anonymous> (C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:205:4)\\n    at Storage.finished (C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\enhanced-resolve\\\\lib\\\\CachedInputFileSystem.js:55:16)\\n    at C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\enhanced-resolve\\\\lib\\\\CachedInputFileSystem.js:91:9\\n    at C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\graceful-fs\\\\graceful-fs.js:123:16\\n    at FSReqCallback.readFileAfterClose [as oncomplete] (internal/fs/read_file_context.js:63:3)\");\n\n//# sourceURL=webpack:///./src/assets/css/estilo.css?");
 
 /***/ }),
 
@@ -114,9 +99,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css
   !*** ./src/assets/scss/index.scss ***!
   \************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/assets/scss/index.scss?");
+eval("throw new Error(\"Module build failed: ModuleBuildError: Module build failed: Error: `sass-loader` requires `node-sass` >=4. Please install a compatible version.\\n    at Object.sassLoader (C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\sass-loader\\\\lib\\\\loader.js:31:19)\\n    at C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\webpack\\\\lib\\\\NormalModule.js:252:20\\n    at C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:367:11\\n    at C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:233:18\\n    at runSyncOrAsync (C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:143:3)\\n    at iterateNormalLoaders (C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:232:2)\\n    at Array.<anonymous> (C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:205:4)\\n    at Storage.finished (C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\enhanced-resolve\\\\lib\\\\CachedInputFileSystem.js:55:16)\\n    at C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\enhanced-resolve\\\\lib\\\\CachedInputFileSystem.js:91:9\\n    at C:\\\\Cursos_Udemy\\\\JavaScript\\\\inicio\\\\webpack\\\\node_modules\\\\graceful-fs\\\\graceful-fs.js:123:16\\n    at FSReqCallback.readFileAfterClose [as oncomplete] (internal/fs/read_file_context.js:63:3)\");\n\n//# sourceURL=webpack:///./src/assets/scss/index.scss?");
 
 /***/ }),
 

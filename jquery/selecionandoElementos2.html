@@ -81,6 +81,32 @@
         <p>Cod3r Ensino</p>
     </footer>
     <script>
-        // ...
+        const comBorda = { 'border': 'solid 8px orange' }
+        const semBorda = { 'border': 'none' }
+
+        $('a[href="#link1"]').parent().css(comBorda).css(semBorda)
+        
+        $('li:last').prev().css(comBorda).css(semBorda)// ultimo filho do elemento pai >> elemento anterior
+        $('a[href="#link1"]').parent().next().css(comBorda).css(semBorda) // elemento pai >> proximo elemento
+        
+        $('a[href="#link2"]').parents().css(comBorda).css(semBorda) // aplica a todos elementos
+        $('a[href="#link1"]').parentsUntil('body').css(comBorda).css(semBorda) // aplica a todos os elementos menos o body
+
+        $('main').children().css(comBorda).css(semBorda) // seleciona os filhos
+        
+        $('body').find('a').css(comBorda).css(semBorda) // seleciona todos os filhos a partir dele
+
+        // é possivel também...
+        const elementoDOM = document.getElementsByClassName('menu')
+        $(elementoDOM).css(comBorda).css(semBorda) 
+
+        $('main').children().each((i, elemento) => {
+            console.log(elemento) // recebe o elemento puro
+            $(elemento).css(comBorda)
+        })
+
+        $('li').each((i, e) => {
+            $(e).css(comBorda)
+        })
     </script>
 </body>

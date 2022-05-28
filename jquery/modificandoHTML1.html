@@ -15,6 +15,25 @@
     <div id='conteudo3'></div>
 
     <script>
-        // ...
+        // Conteudo 1
+        $('#conteudo1').append('<p>1</p>')
+
+        // Conteudo 2
+        const elementos = [
+            $('<li>').append('Arroz'),
+            $('<li>').append('Feijão'),
+            $('<li>').append('Carne')
+        ]
+        const lista = $('<ul><li>Sorverte</li></ul>').prepend(elementos)
+        $('#conteudo2').append(lista)
+
+        // Conteudo 3
+        $('#conteudo3').append(['<h1>1</h1>', '<h1>2</h1>'])
+                .prepend('<h1>0</h1>')
+
+        $('#conteudo3').html('<h1>123</h1>')
+
+        $('div[id]').html('<strong>TODOS!!!</strong>')
+        // Ou seja, o append adicina elementos, o prepend prioriza os elementos, e o html substitui elementos
     </script>
 </body>

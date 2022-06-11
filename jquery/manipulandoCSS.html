@@ -15,6 +15,27 @@
     <div id='div3'>3</div>
     <div id='resultado'></div>
     <script>
-        // ...
+        // Obter o valor da variavel
+        const fonte = $('#div1').css('font-family')
+        $('#resultado').append(`Fonte é: ${fonte}`)
+
+        // Alterar o valor
+        $('#div1').css('font-size', '3em')
+        $('#div2').css({
+            'font-size': '5em',
+            'color': '#222'
+        })
+
+        $('#div3').css('font-size', function () {
+            return `${2 * 2}em`
+        })
+
+        $('#div2').addClass('destaque')
+        const temClasse = $('#div2').hasClass('destaque')
+        $('#resultado').append(`<br>Tem classe? ${temClasse}`)
+
+        $('#div2').removeClass('destaque')
+        $('#div2').toggleClass('destaque')
+        $('#div2').toggleClass('destaque')
     </script>
 </body>

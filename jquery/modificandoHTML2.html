@@ -17,6 +17,31 @@
     <p class='numero'>5</p>
 
     <script>
-        // ...
+        // Dentro do elemento
+        $('#div1').append(', 2')
+        $('#div1').prepend('0, ')
+        $('<span>, 3</span>').appendTo('#div1')
+        $('<span>-1, </span>').prependTo('#div1')
+
+        // Após o elemento
+        $('#div2').before('<p>Antes 2</p>')
+        $('#div2').after('<p>Depois 2</p>')
+        $('<p>Antes 3</p>').insertBefore('#div3')
+        $('<p>Depois3</p>').insertAfter('#div3')
+
+        // Envolve o elemento
+        // $('p.numero').wrap('<div>')
+        $('p.numero').wrapAll('<div id="div4">')
+        $('#div4').empty() // Esconde o conteudo da DOM
+        $('#div3, #div4').prev().remove() // Remove o conteudo da DOM
+
+        // $('<div>Substituto</div>').replaceAll('body > p') // Substituir elementos
+        // $('body > p').replaceWith('<div>Substituto</div>')
+        
+        // Mais flexibilidade no código,
+        // Adiciona o conteudo do elemento selecionado (body > p)
+        $('body > p').replaceWith(function () {
+            return $('<div>').html($(this).html()).append('!!')
+        })
     </script>
 </body>

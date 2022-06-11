@@ -11,15 +11,46 @@
 <body class='conteudo exercicio'>
     <h1>Modificando HTML #03</h1>
     <div id='conteudo'></div>
-
     <script>
-        const pessoas = [
-            { nome: 'Ana', nota: 9.1 },
-            { nome: 'Bianca', nota: 8.4 },
-            { nome: 'Carlos', nota: 7.6 },
-            { nome: 'Julia', nota: 9.7 }
-        ]
-        
-        // ...
+        // Técnica de fugir do escopo global
+        // $(document).ready(function() {})
+        $(function() {
+            const pessoas = [
+                { nome: 'Ana', nota: 9.1 },
+                { nome: 'Bianca', nota: 8.4 },
+                { nome: 'Carlos', nota: 7.6 },
+                { nome: 'Julia', nota: 9.7 }
+            ]
+
+            // Opção 1
+            /*
+            // $('#conteudo').append('<table>')
+            // const linha = $('table').append('<tr>')
+            // $('tr').append('<td>Nomes').append('<td>Notas')
+            
+            */
+            // Opção 2
+            /*
+            <table>
+                <tr>
+                    <td>Nome</td>
+                    <td>Nota</td>
+                </tr>
+            </table>
+            // pessoas.map((x, i) => {
+            //     $('tbody').append('<tr>').append(`<td>${x.nome}`, `<td>${x.nota}`)
+            // })
+            */
+            // Opção 3
+            const linhas = pessoas.map(p => {
+                const nome = $('<td>').html(p.nome)
+                const nota = $('<td>').html(p.nota)
+                return $('<tr>').append(nome, nota)
+            })
+
+            const tabela = $('<table>').append(linhas)
+            $('#conteudo').append(tabela)
+        })
+
     </script>
 </body>

@@ -26,6 +26,29 @@
     <span id='resultado'></span>
 
     <script>
-        // ...
+        function exibirDadosDoEvento(e) {
+            $('#resultado').empty() // Zerar resultado
+            const div1 = $('<div>')
+            const div2 = $('<div>')
+            
+                $('#resultado').append(div1, div2)
+                div1.append(`target: ${e.target.id}`) // Mostra o id da tag
+
+                div1.append(`<br>type: ${e.type}`) // mouseenter mouseleave
+                div1.append(`<br>which: ${e.which}`) // Qual tecla foi clicada
+                div1.append(`<br>metaKey: ${e.metaKey}`) // Quando um comand é clicado no teclado
+
+                div2.append(`pageX: ${e.pageX}`) // Largura
+                div2.append(`<br>pageY: ${e.pageY}`) // Altura
+                div2.append(`<br>clientX: ${e.clientX}`) // Largura
+                div2.append(`<br>clientY: ${e.clientY}`) // Altura
+
+                const obs = e.data ? e.data.obs : null
+                div2.append(`<br>obs: ${obs}`) // O objeto será chamado após ser acionado o evento
+        }
+
+        $('#div1, #div2').on('mouseenter mouseleave', 
+            { obs: 'Funciona!' }, exibirDadosDoEvento)
+        $('input').keyup(exibirDadosDoEvento) // Entrada de teclado
     </script>
 </body>

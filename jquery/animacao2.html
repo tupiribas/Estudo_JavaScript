@@ -26,8 +26,35 @@
 
 <body>
     <div>Animar!</div>
-
+    
     <script>
-        // ...
+        function alterarLargura(valor, duracao) {
+            return $('div').animate({ 
+                width: `+=${valor}`
+             }, duracao)
+        }
+
+        function moverDiagonalDireitaBaixo(valor, duracao) {
+            return $('div').animate({ 
+                top: `+=${valor}`,
+                left: `+=${valor}`
+            }, duracao)
+        }
+
+        function girar(valor, duracao) {
+            return $('div').animate({
+                transform: `+=${valor}`
+            }, 
+            {   step: function (valor) {
+                    $(this).css('transform', `rotate(${valor}deg)`)
+                },
+                duration: duracao
+            }, 'linear') // linear: Não muda o processo de animação
+        }
+
+        Promise.all(alterarLargura(500, 'slow'))
+            .then(alterarLargura(-500, 'slow'))
+            .then(girar(1000, 'slow'))
+            .then(moverDiagonalDireitaBaixo(500, 'slow'))
     </script>
 </body>

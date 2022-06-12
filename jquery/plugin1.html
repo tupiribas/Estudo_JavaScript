@@ -22,6 +22,28 @@
     </div>
 
     <script>
-        // ...
+        (function ($) {
+            $.fn.interpretar = function () {
+                const retirarChaves = script => script.substring(2, script.length - 2)
+                const conteudo = $(this).html()
+
+                // Captura o conteudo que está entre chaves
+                const expressoesComChaves = conteudo.match(/\{\{.+\}\}/g)
+                // Retira a chaves, se tiver
+                const expressoes = expressoesComChaves.map(retirarChaves)
+                // Executa o comando que estava dentro das chaves, se  tiver
+                const resultados = expressoes.map(e => eval(e))
+                // Executa as expressoes uma a uma, atribuindo á DOM
+                let conteudoFinal = conteudo
+                for (let i = 0; i < expressoesComChaves.length; i++) {
+                    conteudoFinal = conteudoFinal.replace(
+                        expressoesComChaves[i], resultados[i]
+                    )
+                }
+                $(this).html(conteudoFinal)
+            } 
+        })(jQuery)
+
+        $('div').interpretar()
     </script>
 </body>

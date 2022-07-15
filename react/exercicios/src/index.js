@@ -1,4 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-ReactDOM.render(<h1>Olá mundo!</h1>, document.getElementById('root'))
+import Primeiro from "./componentes/Primeiro";
+
+ReactDOM.render(<Primeiro />, document.getElementById('root'))

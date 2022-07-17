@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Button from '../components/Button'
 import Display from '../components/Display'
+import { operacao } from "../utils/utils";
 import './Calculator.css'
 
 const initialState = {
@@ -29,7 +30,33 @@ export default class Calculator extends Component {
     }
 
     setOperation(operation) {
-        console.log(operation);
+        if (this.state.atual === 0) {
+            this.setState({ operation, atual: 1, clearDisplay: true })
+        }
+        else {
+            const igal = operation === '='
+            const operacaoAtual = this.state.operation
+
+            const values = [...this.state.values]
+            try {
+                if (isNaN(values[0]) || !isFinite(values[0])) {
+                    this.clearMemory()
+                    return
+                }
+                values[0] = operacao(values[0], operacaoAtual, values[1])
+            } catch (error) {
+                values[0] = this.state.values[0]
+            }
+
+            values[1] = 0
+            this.setState({
+                displayValue: values[0],
+                operacao: igal ? null : operacao,
+                atual: igal ? 0 : 1,
+                clearDisplay: !igal,
+                values
+            })
+        }
     }
 
     addDigit(n) {
@@ -50,11 +77,12 @@ export default class Calculator extends Component {
 
         // Caso não tenha ponto
         if (n !== '.') {
-            const i = this.state.atual // Indice de alteração
+            const i = this.state.atual // Indice após selecionar a operação
             const novoValor = parseFloat(displayValue) // Transforma em ponto flutuante
             const values = [...this.state.values] // Clona os valores
             values[i] = novoValor // Altera o o valor a partir do indice
-            this.setState({ values })
+            this.setState({ values }) // Adiciona o valor
+            console.log(values);
         }
     }
 

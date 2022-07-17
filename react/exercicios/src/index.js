@@ -12,6 +12,6 @@ ReactDOM.render(
         {/* <Multi.Boatarde nome="Tupi"/>
         <Boanoite nome="Mestre"/> */}
 
-        <Saudacao />
+        <Saudacao tipo="Bom dia" nome="Tupi"/>
     </Fragment>    
 , document.getElementById('root'))

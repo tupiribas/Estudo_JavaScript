@@ -1,5 +1,23 @@
 import React from "react";
 import './Button.css';
 
-export default props => 
-    <button className="button">{props.label}</button>
+import { classeOperacao, 
+        classeDouble, 
+        classeTriple } from "../utils/utils";
+
+export default props => {
+    let classes = 'button '
+    classes += classeOperacao(props)
+    classes += classeDouble(props)
+    classes += classeTriple(props)
+
+    return (
+        <button 
+        onClick={
+            e => props.click && props.click(props.label)
+        }
+        className={classes}>
+            {props.label}
+        </button>
+    )
+}

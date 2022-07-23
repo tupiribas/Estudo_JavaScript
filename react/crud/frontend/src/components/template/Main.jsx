@@ -5,7 +5,7 @@ import Header from "./Header";
 
 export default props => 
     <Fragment>
-        <Header/>
+        <Header {...props}/>
         <main className="content">
             Conteúdo
         </main>

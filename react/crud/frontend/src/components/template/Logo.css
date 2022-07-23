@@ -1,5 +1,5 @@
 aside.logo {
-    background-color: rgba(0, 0, 0, 0.123);
+    background-color: var(--bg-dark);
     display: flex;
     justify-content: center;
     align-items: center;

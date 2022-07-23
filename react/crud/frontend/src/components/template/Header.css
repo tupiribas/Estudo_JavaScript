@@ -1,9 +1,9 @@
 header.header {
-    background-color: #fff;
+    background-color: var(--bg-white);
     padding: 0px 15px;
     overflow: hidden;
     white-space: nowrap;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-pad1);
 }
 
 header.header h1 {

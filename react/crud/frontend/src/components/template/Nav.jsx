@@ -1,15 +1,12 @@
 import './Nav.css'
 import React from "react";
+import NavLink from './nav/NavLink';
 
 export default props => 
     <aside className="menu-area">
         <nav className='menu'>
-            {/* Refatorar criando componentes funcionais!! */}
-            <a href="/">
-                <i className='fa fa-home'></i> Início
-            </a>
-            <a href="/users">
-                <i className='fa fa-users'></i> Usuários
-            </a>
+            {/* Refatorado criando componentes funcionais!! */}
+            <NavLink path="/" icon="home" title="Início"/>
+            <NavLink path="/users" icon="users" title="Usuários" />
         </nav>
     </aside>

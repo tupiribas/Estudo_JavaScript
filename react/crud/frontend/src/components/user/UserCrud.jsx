@@ -51,14 +51,14 @@ export default class UserCrud extends Component {
             })
     }
 
-    async getUpdatedList(user) {
+    getUpdatedList(user, add = true) {
         // varificar se o usuário já foi acrecentado á lista
         const list = this.state.list.filter(u => u.id !== user.id)
-        list.unshift(user)
+        if (add) list.unshift(user)
         return list
     }
 
-    async updateField(event) {
+    updateField(event) {
         /**
          * Filosofia para alterar o estado de um componente:
          * Clonar os dados antes e atualizar depois.
@@ -113,10 +113,63 @@ export default class UserCrud extends Component {
         )
     }
 
+    async loud(user) {
+        this.setState({ user })
+    }
+
+    async remove(user) {
+        axius.delete(`${baseUrl}/${user.id}`).then(resp => {
+            // Verifica se o usuário existe
+            const list = this.getUpdatedList(user, false)
+            this.setState({ list })
+        })
+    }
+
+    renderTable() {
+        return (
+            <table className="table mt-4">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.renderRows()}
+                </tbody>
+            </table>
+        )
+    }
+
+    renderRows() {
+        return this.state.list.map(user => {
+            return (
+                <tr key={user.id}>
+                    <td>{user.id}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>
+                        <button className="btn btn-warning"
+                            onClick={() => this.loud(user)}>
+                            <i className="fa fa-pencil"></i>
+                        </button>
+                        <button className="btn btn-danger ml-2"
+                            onClick={() => this.remove(user)}>
+                            <i className="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            )
+        })
+    }
+
     render() {
         return (
             <Main {...headerProps}>
                 {this.renderForm()}
+                {this.renderTable()}
             </Main>
         )
     }

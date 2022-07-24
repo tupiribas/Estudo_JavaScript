@@ -1,11 +1,24 @@
 {
-    "users": [{
-        "id": 1,
-        "name": "Tupi Guedes Ribas",
-        "email": "tupigr@gmail.com"
-    }, {
-        "id": 2,
-        "name": "Maria Andressa Silva Santos",
-        "email": "MaSilva22@outlook.com"
-    }]
+  "users": [
+    {
+      "id": 1,
+      "name": "Tupi Guedes Ribas",
+      "email": "tupigr@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Maria Andressa Silva Santos",
+      "email": "MaSilva22@outlook.com"
+    },
+    {
+      "name": "Lara Guedes Ribas",
+      "email": "lara@outlook.com",
+      "id": 3
+    },
+    {
+      "name": "Maria do Carmo Andrade Pereira de Jesus Filho",
+      "email": "mari22@gmail.com",
+      "id": 4
+    }
+  ]
 }

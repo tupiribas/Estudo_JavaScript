@@ -19,12 +19,25 @@ export default class UserCrud extends Component {
 
     state = { ...initialState }
 
+    // Renderizar os dados cadastrais na lista de estado
+    // componentWillMount() {
+    //     axius(baseUrl).then(resp => {
+    //         this.setState({ list: resp.data })
+    //     })
+    // }
+    // Renderizar os dados cadastrais na lista de estado
+    async componentDidMount() {
+        axius(baseUrl).then(resp => {
+            this.setState({ list: resp.data })
+        })
+    }
+
     // Limpar apenas o usuário
-    clear() {
+    async clear() {
         this.setState({ user: initialState.user })
     }
 
-    save() {
+    async save() {
         const user = this.state.user
         // Esolha da requisição http que será feita
         const methodHTTP = user.id ? 'put' : 'post'
@@ -38,14 +51,14 @@ export default class UserCrud extends Component {
             })
     }
 
-    getUpdatedList(user) {
+    async getUpdatedList(user) {
         // varificar se o usuário já foi acrecentado á lista
         const list = this.state.list.filter(u => u.id !== user.id)
         list.unshift(user)
         return list
     }
 
-    updateField(event) {
+    async updateField(event) {
         /**
          * Filosofia para alterar o estado de um componente:
          * Clonar os dados antes e atualizar depois.

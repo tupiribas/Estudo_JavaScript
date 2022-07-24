@@ -72,6 +72,8 @@ export default class UserCrud extends Component {
     renderForm() {
         return (
             <div className="form">
+                {/* Volta ao topo quando for editar */}
+                <span id="topo"></span> 
                 <div className="row">
                     <div className="col-12 col-md-6">
                         <div className="form-group">
@@ -143,6 +145,10 @@ export default class UserCrud extends Component {
         )
     }
 
+    returnTopScroll() {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+    }
+
     renderRows() {
         return this.state.list.map(user => {
             return (
@@ -152,7 +158,9 @@ export default class UserCrud extends Component {
                     <td>{user.email}</td>
                     <td>
                         <button className="btn btn-warning"
-                            onClick={() => this.loud(user)}>
+                            onClick={() => {
+                                this.loud(user)
+                                this.returnTopScroll()}}>
                             <i className="fa fa-pencil"></i>
                         </button>
                         <button className="btn btn-danger ml-2"

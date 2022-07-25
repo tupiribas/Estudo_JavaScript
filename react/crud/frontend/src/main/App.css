@@ -2,10 +2,11 @@
     --bg-dark: #1A2F3A;
     --bg-white: #fff;
 
-    --logo-height: 100px;
-    --header-heigth: 150px;
+    --logo-height: 190px;
+    --header-heigth: 100px;
     --aside-width: 225px;
     --footer-height: 40px;
+    --menu-top-height: 60px;
 
     --shadow-pad1: 
         0 2px 23px 0 rgba(0, 0, 0, 0.1),
@@ -58,4 +59,37 @@ main.content {
 
 footer.footer {
     grid-area: footer;
+}
+
+@media(max-width: 768px) {
+    .app {
+        grid-template-rows: 
+            var(--header-heigth)
+            var(--menu-top-height) 
+            1fr
+            var(--footer-height);
+        grid-template-columns: var(--aside-width);
+        grid-template-areas: 
+            "logo header"
+            "menu menu"
+            "content content"
+            "footer footer";
+    }
+}
+
+@media(max-width: 576px) {
+    .app {
+        grid-template-rows: 
+            var(--logo-height)
+            var(--menu-top-height)
+            1fr
+            var(--footer-height);
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "logo"
+            "menu"
+            "content"
+            "footer"
+            ;
+    }
 }
